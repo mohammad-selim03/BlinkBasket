@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import Container from "./Container";
-import { config } from "../../config";
 import { getData } from "../lib";
 import Title from "./Title";
 import { Link } from "react-router-dom";
 import { CategoryProps } from "../../type";
+import { config } from "../../config";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const endpoint = `${config?.baseUrl}/categories`;
+      const endpoint = `${config?.baseURL}/categories`;
       try {
         const data = await getData(endpoint);
         setCategories(data);

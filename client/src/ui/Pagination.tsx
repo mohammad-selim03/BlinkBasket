@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-import { config } from "../../config";
-import { getData } from "../lib";
 import { ProductProps } from "../../type";
 import ProductCard from "./ProductCard";
 import ReactPaginate from "react-paginate";
+import { config } from "../../config";
+import { getData } from "../lib";
 
 interface ItemsProps {
   currentItems: ProductProps[];
@@ -26,21 +26,20 @@ const Pagination = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const endpoint = `${config?.baseUrl}/products`;
+      const endpoint = `${config?.baseURL}/products`;
       try {
         const data = await getData(endpoint);
         setProducts(data);
       } catch (error) {
         console.error("Error fetching data", error);
       }
-    };
+    }; 
     fetchData();
   }, []);
-  const itemsPerPage = 15;
+  const itemsPerPage = 15; // staticly define
   const [itemOffset, setItemOffset] = useState(0);
   const [itemStart, setItemStart] = useState(1);
   const endOffset = itemOffset + itemsPerPage;
-  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = products.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(products.length / itemsPerPage);
 

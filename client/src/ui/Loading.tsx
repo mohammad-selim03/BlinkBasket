@@ -9,7 +9,7 @@ const Loading = () => {
         animationDuration="0.75"
         ariaLabel="rotating-lines-loading"
       />
-      <p className="text-white text-2xl font-bold tracking-widest">
+      <p className="text-white text-2xl font-bold tracking-widest mt-2">
         Loading...
       </p>
     </div>
