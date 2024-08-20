@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { config } from "../../config";
 import { getData } from "../lib";
 import { RotatingLines } from "react-loader-spinner";
@@ -10,7 +10,7 @@ const CategoryFilters = ({ id }: { id: string | undefined }) => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
-      const endpoint = `${config?.baseUrl}/categories`;
+      const endpoint = `${config?.baseURL}/categories`;
       try {
         setLoading(true);
         const data = await getData(endpoint);
