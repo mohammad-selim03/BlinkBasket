@@ -27,6 +27,7 @@ const Orders = () => {
         if (docSnap.exists()) {
           const orderData = docSnap?.data()?.orders;
           setOrders(orderData);
+          console.log(orderData)
         } else {
           console.log("No orders yet!");
         }
