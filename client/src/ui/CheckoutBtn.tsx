@@ -6,12 +6,12 @@ import { config } from "../../config";
 const CheckoutBtn = ({ products }: { products: ProductProps[] }) => {
   const { currentUser } = store();
   const publishableKey =
-    "pk_test_51PWdLHKMztBLVeWcnAmD76Kho5WePBJleYTv7IIBk6TiAwmEL8TjP7CenwBI2rFHVnBYT0LIr6IR7WqkYijqtfrF00W96lGlPV";
+    "pk_test_51O7qmVGR9hlKk72pMHG35MMR7ZuvW4xFgWERZsV4r0UtjXuG4gTgKsfM4utp2WhMrr8iyDTsihLLthcbem1t0yEq000EoeHwMX";
   const stripePromise = loadStripe(publishableKey);
 
   const handleCheckout = async () => {
     const stripe = await stripePromise;
-    const response = await fetch(`${config?.baseUrl}/checkout`, {
+    const response = await fetch(`${config?.baseURL}/checkout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

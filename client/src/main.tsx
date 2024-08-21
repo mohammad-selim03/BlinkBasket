@@ -1,9 +1,9 @@
-import { StrictMode } from 'react'
+// import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import Layout from './ui/Layout.tsx'
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration } from 'react-router-dom'
 import Product from './pages/Product.tsx'
 import Category from './pages/Category.tsx'
 import Profile from './pages/Profile.tsx'
@@ -17,6 +17,7 @@ import NotFound from './pages/NotFound.tsx'
 const RouterLayout = () => {
   return (
     <Layout>
+      <ScrollRestoration />  {/* feature for always on get top of the page */}
       <Outlet />
     </Layout>
   )

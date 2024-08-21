@@ -12,9 +12,14 @@ import { IoClose, IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { logo } from "../assets";
 import Container from "./Container";
-import {config} from "../../config"
+import { config } from "../../config";
 import { getData } from "../lib";
-import { CategoryProps } from "../../type";
+import { CategoryProps, ProductProps } from "../../type";
+import FavoriteProduct from "./FavoriteProduct";
+import CartProduct from "./CartProduct";
+import ProductCard from "./ProductCard";
+import { store } from "../lib/store";
+
 
 const bottomNavigation = [
   { title: "Home", link: "/" },
@@ -28,12 +33,25 @@ const bottomNavigation = [
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const [categories, setCategories] = useState([]);
- 
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const {cartProduct,favoriteProduct, currentUser} = store();
 
-  
+  // fetching products Data
+  useEffect(() => {
+    const fetchData = async () => {
+      const endpoint = `${config?.baseURL}/products`;
+      try {
+        const data = await getData(endpoint);
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+    fetchData();
+  }, []);
 
-
-// fetching categories data
+  // fetching categories data
   useEffect(() => {
     const fetchData = async () => {
       const endpoint = `${config?.baseURL}/categories`;
@@ -47,7 +65,12 @@ const Header = () => {
     fetchData();
   }, []);
 
-  
+  useEffect(() => {
+    const filtered = products.filter((item: ProductProps) =>
+      item?.name?.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  }, [searchText]);
 
   return (
     <div className="w-full bg-whiteText md:sticky md:top-0 z-50">
@@ -74,8 +97,49 @@ const Header = () => {
             <IoSearchOutline className="absolute top-2.5 right-4 text-xl" />
           )}
         </div>
-        
-        
+        {/* Search products from api */}
+        {searchText && (
+          <div className="absolute left-0 top-20 w-full mx-auto max-h-[500px] px-10 py-5 bg-white z-20 overflow-y-scroll text-black shadow-lg shadow-skyText scrollbar-hide ">
+            {filteredProducts?.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5  max-w-screen-xl mx-auto ">
+                {filteredProducts?.map((item:ProductProps, index) => (
+                  <ProductCard key={index} item={item} setSearchText={setSearchText}/>
+                ))}
+                 </div>
+            ) : (
+              <div className="py-10 bg-gray-50 w-full flex items-center justify-center border-gray-600 rounded-md">
+                <p className="text-xl font-normal">Nothing matches with your search keywords <span className="underline underline-offset-2 decoration-[1px] text-red-500 font-semibold">{`(${searchText})`}</span>. Please try again</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* MenuBar goes here */}
+        <div className="flex items-center gap-x-6 text-2xl">
+          <Link to={"/profile"}>
+            {currentUser ? (
+              <img
+                src={currentUser?.avatar}
+                alt="profileImg"
+                className="w-10 h-10 rounded-full object-cover"
+              />
+            ) : (
+              <FiUser className="hover:text-skyText duration-200 cursor-pointer" />
+            )}
+          </Link>
+          <Link to={"/favorite"} className="relative block">
+            <FiStar className="hover:text-skyText duration-200 cursor-pointer" />
+            <span className="inline-flex items-center justify-center bg-redText text-whiteText absolute -top-1 -right-2 text-[9px] rounded-full w-4 h-4">
+              {FavoriteProduct?.length > 0 ? favoriteProduct?.length : "0"}
+            </span>
+          </Link>
+          <Link to={"/cart"} className="relative block">
+            <FiShoppingBag className="hover:text-skyText duration-200 cursor-pointer" />
+            <span className="inline-flex items-center justify-center bg-redText text-whiteText absolute -top-1 -right-2 text-[9px] rounded-full w-4 h-4">
+              {CartProduct?.length > 0 ? cartProduct?.length : "0"}
+            </span>
+          </Link>
+        </div>
       </div>
       <div className="w-full bg-darkText text-whiteText">
         <Container className="py-2 max-w-4xl flex items-center gap-5 justify-between">
