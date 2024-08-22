@@ -1,7 +1,7 @@
 {
   "name": "admin",
   "version": "1.0.0",
-  "description": "Backend for ecommerce web",
+  "description": "Backend for blink basket store ecommerce web",
   "main": "index.mjs",
   "type": "module",
   "scripts": {
