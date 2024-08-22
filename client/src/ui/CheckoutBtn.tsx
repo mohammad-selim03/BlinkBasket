@@ -24,6 +24,7 @@ const CheckoutBtn = ({ products }: { products: ProductProps[] }) => {
     const checkoutSession = await response?.json();
     const result: any = await stripe?.redirectToCheckout({
       sessionId: checkoutSession.id,
+      
     });
     if (result.error) {
       window.alert(result?.error?.message);

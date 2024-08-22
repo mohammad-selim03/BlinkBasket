@@ -2,7 +2,7 @@ import { Router } from "express";
 import Stripe from "stripe";
 const router = Router();
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripeSecretKey = "sk_test_51O7qmVGR9hlKk72pRMRYxVFGeYQUx7q6z93LdD3akCIGetfMHCCeiOn4vWXmFFhrAceENt2uVXMzPH9u9OtAGHge00xBAemf5I";
 
 router.post("/checkout", async (req, res) => {
   const stripe = new Stripe(stripeSecretKey, {
@@ -10,6 +10,7 @@ router.post("/checkout", async (req, res) => {
   });
   try {
     const { items, email } = await req.body;
+    console.log(items, email)
 
     const extractingItems = await items.map((item) => ({
       quantity: item.quantity,
@@ -29,8 +30,8 @@ router.post("/checkout", async (req, res) => {
       line_items: extractingItems,
       mode: "payment",
       success_url:
-        "http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "http://localhost:5173/cancel",
+        "https://blink-basket.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: "https://blink-basket.vercel.app/cancel",
       metadata: {
         email,
       },
