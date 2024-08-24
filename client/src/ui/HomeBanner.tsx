@@ -1,29 +1,27 @@
 import { banner1 } from "../assets";
-import AutoPlayslider from "./AutoPlayslider";
 import Container from "./Container";
 import LinkButton from "./LinkButton";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 6,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 4,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 2,
-  },
-};
+// const responsive = {
+//   superLargeDesktop: {
+//     // the naming can be any, depends on you.
+//     breakpoint: { max: 4000, min: 3000 },
+//     items: 5,
+//   },
+//   desktop: {
+//     breakpoint: { max: 3000, min: 1024 },
+//     items: 6,
+//   },
+//   tablet: {
+//     breakpoint: { max: 1024, min: 464 },
+//     items: 4,
+//   },
+//   mobile: {
+//     breakpoint: { max: 464, min: 0 },
+//     items: 2,
+//   },
+// };
 
 const HomeBanner = () => {
   return (
@@ -46,7 +44,6 @@ const HomeBanner = () => {
         </p>
         <LinkButton className="max-w-52 flex items-center justify-center bg-whiteText text-darkText hover:bg-darkText hover:text-whiteText duration-200 mt-12" />
       </div>
-      {/* <AutoPlayslider /> */}
     </Container>
   );
 };
