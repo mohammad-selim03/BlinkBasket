@@ -5,10 +5,10 @@ import {
   Dialog,
   DialogBackdrop,
   DialogPanel,
-  DialogTitle,
+  
 } from "@headlessui/react";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
-import { banner2, modalImg } from "../assets";
+
+import {modalImg } from "../assets";
 
 const ProductModel = () => {
   const [open, setOpen] = useState(true);
