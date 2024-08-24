@@ -6,7 +6,7 @@ interface Props{
 }
 
 const Container = ({children, className}:Props) => {
-    const newClassName = twMerge('max-w-screen-xl mx-auto py-10 px-4 lg:px-0 ', className)
+    const newClassName = twMerge('max-w-screen-2xl mx-auto py-10 px-4 lg:px-10 ', className)
   return (
     <div className={newClassName}>{children}</div>
   )

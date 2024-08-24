@@ -1,4 +1,5 @@
 import { FaArrowLeft } from "react-icons/fa";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
@@ -15,7 +16,7 @@ const LinkButton = ({ showButton, link, className }: Props) => {
   );
   return (
     <Link to={link ? link : "/products"} className={newClassName}>
-      {showButton && <FaArrowLeft />} Start Shopping
+      {showButton && <FaArrowLeft />}<MdOutlineAddShoppingCart /> Start Shopping
     </Link>
   );
 };

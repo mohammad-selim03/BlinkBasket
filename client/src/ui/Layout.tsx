@@ -4,7 +4,7 @@ import Header from "./Header"
 
 const Layout = ({children}: {children:React.ReactNode}) => {
   return (
-    <div>
+    <div className="max-w-screen-2xl mx-auto">
         <Header />
         {children}
         <Footer />

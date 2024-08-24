@@ -51,14 +51,14 @@ const BannerCategories = () => {
       infinite={true}
       autoPlay={true}
       transitionDuration={1000}
-      className="flex flex-row p-4 max-w-screen-xl mx-auto lg:px-0 relative"
+      className="flex flex-row p-4  max-w-screen-xl mx-auto lg:px-0 relative"
       customRightArrow={<CustomRightArrow />}
       customLeftArrow={<CustomLeftArrow />}
     >
       {
         categories?.map((item:CategoryProps) => (
-          <Link to={`category/${item?._base}`} key={item?._id} className="flex items-center gap-x-2 p-1 border border-gray-100 mr-1 flex-1 rounded-md hover:border-skyText hover:shadow-lg">
-            <img src={item?.image} alt="category image" className="w-10 h-10 rounded-full object-cover"/>
+          <Link to={`category/${item?._base}`} key={item?._id} className="flex flex-col items-center gap-x-2 p-1 mr-1 flex-1 rounded-md hover:border-skyText hover:shadow-lg">
+            <img src={item?.image} alt="category image" className="w-20 h-20 rounded-full object-cover"/>
             <p className="text-sm font-semibold">{item?.name}</p>
           </Link>
         ))

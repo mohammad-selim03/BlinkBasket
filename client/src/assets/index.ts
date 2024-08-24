@@ -14,6 +14,12 @@ import brandFive from "./brands/brandFive.webp";
 import brandSix from "./brands/brandSix.webp";
 import productPayment from "./productPayment.webp";
 import homeBanner from "./homeBanner.jpg";
+import logo1 from "../../public/logoo.png"
+import logo2 from "../../public/logo.png"
+import banner1 from "../assets/banner/main-banner-1.png"
+import banner2 from "../assets/banner/main-banner-2.png"
+import banner3 from "../assets/banner/main-banner-3.png"
+import modalImg from "../assets/modal/modalimg.jpg"
 
 export {
   logo,
@@ -32,4 +38,10 @@ export {
   brandSix,
   productPayment,
   homeBanner,
+  logo1,
+  logo2,
+  banner1,
+  banner2,
+  banner3,
+  modalImg,
 };
