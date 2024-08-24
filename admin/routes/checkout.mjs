@@ -30,8 +30,8 @@ router.post("/checkout", async (req, res) => {
       line_items: extractingItems,
       mode: "payment",
       success_url:
-        "https://blink-basket.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "https://blink-basket.vercel.app/cancel",
+        "https://blink-basket-llos.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: "https://blink-basket-llos.vercel.app/cancel",
       metadata: {
         email,
       },
